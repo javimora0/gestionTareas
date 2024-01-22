@@ -1,0 +1,24 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form [formGroup]="loginForm">
+      <div class="form-group" >
+        <label>Correo electrónico</label>
+        <input type="email" id="email" name="email" required  formControlName="email">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" id="password" name="password" required formControlName="password">
+      </div>
+      <div class="form-group">
+        <label for="role">Rol</label>
+        <select id="role" name="role" required formControlName="rol">
+          <option value="admin">admin</option>
+          <option value="developer">programador</option>
+        </select>
+      </div>
+      <button (click)="logear()" type="submit" class="login-button">Ingresar</button>
+    </form>
+    <label class="label-message">{{mensaje}}</label>
+  </div>
+</div>
