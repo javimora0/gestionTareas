@@ -4,6 +4,7 @@ import {userSessionStorage, userLogin} from "../interfaces/login-interface";
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
+import {ServicioCompartidoService} from "../services/compartido/servicio-compartido.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,11 @@ import {HttpResponse} from "@angular/common/http";
   styleUrl: './login.component.css'
 })
 export class LoginComponent{
-  constructor(private authService: AuthServiceService, private router:Router){}
+  constructor(
+    private authService: AuthServiceService,
+    private router:Router,
+    private servicioCompartido: ServicioCompartidoService
+  ){}
 
 
   token: string | undefined = ""
@@ -45,6 +50,11 @@ export class LoginComponent{
           this.usuarioSessiontorage.id = response.body.data.id
           this.usuarioSessiontorage.token = response.body.token
           sessionStorage.setItem('usuario', JSON.stringify(this.usuarioSessiontorage))
+
+          // Uso de servicio compartido para pasar datos a otro componente sin relacion
+          this.servicioCompartido.cambiarItem(response.body.data.nombre);
+
+          // Pasa por parametro el id del usuario
           this.router.navigate(['/main', response.body.data.id], {skipLocationChange: true}).then(r => console.log(r));
         }
         console.log('Código de estado:', response.status);

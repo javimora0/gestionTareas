@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.imagen {
+  height: 256px; /* Tamaño más pequeño */
+  width: 256px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el efecto */
+}
+
+.imagen:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más prominente */
+}
+
+.item h2 {
+  margin-top: 10px;
+  color: #666;
+}
