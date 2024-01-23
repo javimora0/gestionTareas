@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthServiceService} from '../services/auth/auth-service.service'
 import {userSessionStorage, userLogin} from "../interfaces/login-interface";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
 
@@ -12,8 +12,9 @@ import {HttpResponse} from "@angular/common/http";
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
-  constructor(private authService: AuthServiceService){}
+export class LoginComponent{
+  constructor(private authService: AuthServiceService, private router:Router){}
+
 
   token: string | undefined = ""
   mensaje: string = ""
@@ -44,6 +45,7 @@ export class LoginComponent {
           this.usuarioSessiontorage.id = response.body.data.id
           this.usuarioSessiontorage.token = response.body.token
           sessionStorage.setItem('usuario', JSON.stringify(this.usuarioSessiontorage))
+          this.router.navigate(['/main', response.body.data.id], {skipLocationChange: true}).then(r => console.log(r));
         }
         console.log('Código de estado:', response.status);
         console.log('Cuerpo de la respuesta:', response.body);
@@ -51,6 +53,8 @@ export class LoginComponent {
       error: (err) => {
         console.log(err)
       }
+
     })
+
   }
 }

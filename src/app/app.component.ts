@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 
@@ -10,6 +10,11 @@ import {LoginComponent} from "./login/login.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
-  title = 'gestionTareas';
+
+  logeado: boolean = false
+
+
+
 }
