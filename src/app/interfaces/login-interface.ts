@@ -22,5 +22,6 @@ export interface userLogin {
 
 export interface userSessionStorage {
   id:               number,
-  token:            string
+  token:            string,
+  rol:              string
 }

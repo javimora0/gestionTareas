@@ -32,7 +32,8 @@ export class LoginComponent{
 
   usuarioSessiontorage : userSessionStorage = {
     id: 0,
-    token: ""
+    token: "",
+    rol: ""
   }
   logear() {
     // (??): Este operador devuelve el valor de su lado izquierdo si no es null ni undefined. Si lo es, devuelve el valor del lado derecho.
@@ -49,6 +50,7 @@ export class LoginComponent{
         }else {
           this.usuarioSessiontorage.id = response.body.data.id
           this.usuarioSessiontorage.token = response.body.token
+          this.usuarioSessiontorage.rol = <string>this.loginForm.value.rol
           sessionStorage.setItem('usuario', JSON.stringify(this.usuarioSessiontorage))
 
           // Uso de servicio compartido para pasar datos a otro componente sin relacion
