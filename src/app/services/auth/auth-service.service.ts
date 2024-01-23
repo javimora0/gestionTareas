@@ -11,7 +11,7 @@ export class AuthServiceService {
   constructor(private http: HttpClient) {
   }
 
-  private urlLogin: string = env.URL + 'login'
+  private urlLogin: string = env.URL + 'api/login'
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
     observe: 'response' as 'response'

@@ -30,11 +30,7 @@ export class LoginComponent{
     rol: new FormControl('', Validators.required)
   })
 
-  usuarioSessiontorage : userSessionStorage = {
-    id: 0,
-    token: "",
-    rol: ""
-  }
+  usuarioSessiontorage : userSessionStorage = {id: 0, token: "", rol: ""}
   logear() {
     // (??): Este operador devuelve el valor de su lado izquierdo si no es null ni undefined. Si lo es, devuelve el valor del lado derecho.
     let body: userLogin = {
@@ -53,11 +49,11 @@ export class LoginComponent{
           this.usuarioSessiontorage.rol = <string>this.loginForm.value.rol
           sessionStorage.setItem('usuario', JSON.stringify(this.usuarioSessiontorage))
 
-          // Uso de servicio compartido para pasar datos a otro componente sin relacion
+          // Uso de servicio compartido para pasar datos a otro componente sin relacion, pasa el nombre al app.root
           this.servicioCompartido.cambiarItem(response.body.data.nombre);
 
           // Pasa por parametro el id del usuario
-          this.router.navigate(['/main', response.body.data.id], {skipLocationChange: true}).then(r => console.log(r));
+          this.router.navigate(['/main']).then(r => console.log(r));
         }
         console.log('Código de estado:', response.status);
         console.log('Cuerpo de la respuesta:', response.body);
