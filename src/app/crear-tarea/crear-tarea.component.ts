@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {userSessionStorage} from "../interfaces/login-interface";
 import {tareaPost} from "../interfaces/tarea-interface";
@@ -30,25 +30,22 @@ export class CrearTareaComponent implements OnInit {
     usuario: new FormControl(0, Validators.required),
   })
   usuarios?: any[] = []
-
-  constructor(private usuarioService: UsuarioService, private tareaServicio: ServicioTareasService, private router: Router) {
-  }
+  @Input() crearTareaModal!: boolean;
+  @Output() crearTareaEmitido = new EventEmitter<boolean>()
+  constructor(private usuarioService: UsuarioService, private tareaServicio: ServicioTareasService, private router: Router) {}
 
   ngOnInit(): void {
-
-    // Obtener el usuario del local storage
     const usuarioAlmacenado = sessionStorage.getItem('usuario');
     if (usuarioAlmacenado) {
       this.usuario = JSON.parse(usuarioAlmacenado) as userSessionStorage;
     }
-
     // Obtener todos los usuarios
     this.usuarioService.getUsuarios(this.usuario.token).subscribe({
       next: (data: HttpResponse<any>) => {
         this.usuarios = data.body.usuarios
       },
       error: (err) => {
-        console.log(err)
+        console.log("Error al obtener usuarios", err)
       }
     })
   }
@@ -68,7 +65,8 @@ export class CrearTareaComponent implements OnInit {
         if (data.status === 200) {
           // tarea creada
 
-          this.router.navigate(['/main']).then(error => console.log(error))
+          this.crearTareaModal = false
+          this.crearTareaEmitido.emit(this.crearTareaModal)
         }
       },
       error: (err) => {
@@ -78,6 +76,7 @@ export class CrearTareaComponent implements OnInit {
   }
 
   cerrar() {
-    this.router.navigate(['/main']).then(error => console.log(error))
+    this.crearTareaModal = false
+    this.crearTareaEmitido.emit(this.crearTareaModal)
   }
 }
