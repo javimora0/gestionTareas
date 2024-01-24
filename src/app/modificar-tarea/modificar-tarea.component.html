@@ -12,7 +12,8 @@
   <tbody>
 
     @for (tarea of tareas; track tarea.id){
-      <tr>
+      <tr (click)="infoTarea(tarea.id)">
+        <td hidden>{{ tarea.id }}</td>
         <td>{{ tarea.descripcion }}</td>
         <td>{{ tarea.dificultad }}</td>
         <td>{{ tarea.horas_previstas }}</td>

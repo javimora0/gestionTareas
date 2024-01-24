@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {env} from "../../../environments/environment.development";
 import {Observable} from "rxjs";
-import {TareaGet, tareaPost} from "../../interfaces/tarea-interface";
+import {Tarea, TareaGet, tareaPost} from "../../interfaces/tarea-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,16 @@ export class ServicioTareasService {
       observe: 'response' as 'response'
     };
     return this.http.post<tareaPost>(this.url, body, httpOptions)
+  }
+
+  getTarea(token: string, idTarea: string | null): Observable<HttpResponse<any>> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-token': token
+      }),
+      observe: 'response' as 'response'
+    };
+    return this.http.get<Tarea>(this.url +'/' +idTarea, httpOptions)
   }
 }

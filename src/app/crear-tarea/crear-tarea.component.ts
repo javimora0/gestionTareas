@@ -31,8 +31,9 @@ export class CrearTareaComponent implements OnInit {
     usuario: new FormControl(0, Validators.required),
   })
   usuarios?: any[] = []
-  @Input() crearTareaModal!: boolean;
-  @Output() crearTareaEmitido = new EventEmitter<boolean>()
+
+  @Output() crearTareaEmitido = new EventEmitter<string>()
+  @Input() modal!: string;
   constructor(private usuarioService: UsuarioService, private tareaServicio: ServicioTareasService, private router: Router) {}
 
   ngOnInit(): void {
@@ -67,8 +68,8 @@ export class CrearTareaComponent implements OnInit {
         if (data.status === 200) {
           // tarea creada
 
-          this.crearTareaModal = false
-          this.crearTareaEmitido.emit(this.crearTareaModal)
+          this.modal = 'main'
+          this.crearTareaEmitido.emit(this.modal)
         }
       },
       error: (err) => {
@@ -78,7 +79,7 @@ export class CrearTareaComponent implements OnInit {
   }
 
   cerrar() {
-    this.crearTareaModal = false
-    this.crearTareaEmitido.emit(this.crearTareaModal)
+    this.modal = 'main'
+    this.crearTareaEmitido.emit(this.modal)
   }
 }

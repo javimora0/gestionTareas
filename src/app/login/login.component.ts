@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthServiceService} from '../services/auth/auth-service.service'
 import {userSessionStorage, userLogin} from "../interfaces/login-interface";
-import {Router, RouterLink} from "@angular/router";
+import {Route, Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
 import {ServicioCompartidoService} from "../services/compartido/servicio-compartido.service";
@@ -13,12 +13,23 @@ import {ServicioCompartidoService} from "../services/compartido/servicio-compart
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit {
+  usuario: userSessionStorage = {id: 0, token: "", rol: ""}
+
   constructor(
     private authService: AuthServiceService,
-    private router:Router,
-    private servicioCompartido: ServicioCompartidoService
-  ){}
+    private router: Router,
+    private servicioCompartido: ServicioCompartidoService,
+    private routes: Router
+  ) {
+  }
+
+  ngOnInit(): void {
+    const usuarioAlmacenado = sessionStorage.getItem('usuario');
+    if (usuarioAlmacenado) {
+      this.routes.navigate(['/main']).then(r => console.log(r))
+    }
+  }
 
 
   token: string | undefined = ""
@@ -30,7 +41,8 @@ export class LoginComponent{
     rol: new FormControl('', Validators.required)
   })
 
-  usuarioSessiontorage : userSessionStorage = {id: 0, token: "", rol: ""}
+  usuarioSessiontorage: userSessionStorage = {id: 0, token: "", rol: ""}
+
   logear() {
     // (??): Este operador devuelve el valor de su lado izquierdo si no es null ni undefined. Si lo es, devuelve el valor del lado derecho.
     let body: userLogin = {
@@ -43,7 +55,7 @@ export class LoginComponent{
       next: (response: HttpResponse<any>) => {
         if (response.status === 203) {
           this.mensaje = response.body.msg
-        }else {
+        } else {
           this.usuarioSessiontorage.id = response.body.data.id
           this.usuarioSessiontorage.token = response.body.token
           this.usuarioSessiontorage.rol = <string>this.loginForm.value.rol

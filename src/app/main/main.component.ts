@@ -5,6 +5,7 @@ import {userSessionStorage} from "../interfaces/login-interface";
 import {ModalInicioSesionComponent} from "../modal-inicio-sesion/modal-inicio-sesion.component";
 import {CrearTareaComponent} from "../crear-tarea/crear-tarea.component";
 import {ModificarTareaComponent} from "../modificar-tarea/modificar-tarea.component";
+import {EliminarTareaComponent} from "../eliminar-tarea/eliminar-tarea.component";
 
 @Component({
   selector: 'app-main',
@@ -14,7 +15,8 @@ import {ModificarTareaComponent} from "../modificar-tarea/modificar-tarea.compon
     RouterLink,
     ModalInicioSesionComponent,
     CrearTareaComponent,
-    ModificarTareaComponent
+    ModificarTareaComponent,
+    EliminarTareaComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
@@ -24,6 +26,7 @@ export class MainComponent implements OnInit {
   login = true
   crearTarea = false
   modificarTarea = false
+  modal = 'main'
   constructor(private router: Router) {
   }
   ngOnInit(): void {
@@ -36,17 +39,17 @@ export class MainComponent implements OnInit {
   }
 
   crearTareaAbrir() {
-    this.crearTarea = true
+    this.modal = 'crear'
   }
 
   modificarTareaAbrir() {
-    this.modificarTarea = true
+    this.modal = 'modificar'
+  }
+  eliminarTareaAbrir() {
+    this.modal = 'eliminar'
   }
 
-  manejarDatoRecibido(dato: boolean) {
-    this.crearTarea = dato
-  }
-  manejarDato(dato: boolean) {
-    this.modificarTarea = dato
+  manejarDatoRecibido(dato: string) {
+    this.modal = dato
   }
 }
