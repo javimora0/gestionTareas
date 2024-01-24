@@ -1,11 +1,6 @@
 
 @if (!login) {
-  <div class="modal">
-    <div class="modal-content">
-      <p>Debe iniciar sesión para acceder a esta página.</p>
-      <button routerLink="/login">Iniciar Sesión</button>
-    </div>
-  </div>
+  <app-modal-inicio-sesion></app-modal-inicio-sesion>
 } @else {
   <div class="container">
     <div class="item">

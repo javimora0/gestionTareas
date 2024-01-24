@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {NgOptimizedImage} from "@angular/common";
 import {userSessionStorage} from "../interfaces/login-interface";
+import {ModalInicioSesionComponent} from "../modal-inicio-sesion/modal-inicio-sesion.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    RouterLink
+    RouterLink,
+    ModalInicioSesionComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
