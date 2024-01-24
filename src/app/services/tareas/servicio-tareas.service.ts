@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {env} from "../../../environments/environment.development";
 import {Observable} from "rxjs";
@@ -9,23 +9,27 @@ import {TareaGet, tareaPost} from "../../interfaces/tarea-interface";
 })
 export class ServicioTareasService {
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient) {
+  }
+
   private url: string = env.URL + 'admin/task'
 
   getTareas(token: string): Observable<HttpResponse<TareaGet>> {
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-      observe: 'response' as 'response',
-      'x-token': token
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-token':token
+      }),
+      observe: 'response' as 'response'
     };
-    return this.http.get<TareaGet>(this.url,httpOptions)
+    return this.http.get<TareaGet>(this.url, httpOptions)
   }
 
   postTareas(token: string, body: tareaPost): Observable<HttpResponse<any>> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'x-token':token
+        'x-token': token
       }),
       observe: 'response' as 'response'
     };

@@ -1,0 +1,27 @@
+<table>
+  <thead>
+  <tr>
+    <th>Descripción</th>
+    <th>Dificultad</th>
+    <th>Horas Previstas</th>
+    <th>Horas Realizadas</th>
+    <th>Porcentaje</th>
+    <th>Completada</th>
+  </tr>
+  </thead>
+  <tbody>
+
+    @for (tarea of tareas; track tarea.id){
+      <tr>
+        <td>{{ tarea.descripcion }}</td>
+        <td>{{ tarea.dificultad }}</td>
+        <td>{{ tarea.horasPrevistas }}</td>
+        <td>{{ tarea.horasRealizadas }}</td>
+        <td>{{ tarea.porcentaje }}</td>
+        <td>{{ tarea.completada }}</td><br>
+      </tr>
+    }
+  </tbody>
+</table>
+
+

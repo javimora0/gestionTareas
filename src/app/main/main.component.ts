@@ -4,6 +4,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {userSessionStorage} from "../interfaces/login-interface";
 import {ModalInicioSesionComponent} from "../modal-inicio-sesion/modal-inicio-sesion.component";
 import {CrearTareaComponent} from "../crear-tarea/crear-tarea.component";
+import {ModificarTareaComponent} from "../modificar-tarea/modificar-tarea.component";
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,8 @@ import {CrearTareaComponent} from "../crear-tarea/crear-tarea.component";
     NgOptimizedImage,
     RouterLink,
     ModalInicioSesionComponent,
-    CrearTareaComponent
+    CrearTareaComponent,
+    ModificarTareaComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
@@ -21,6 +23,7 @@ export class MainComponent implements OnInit {
   usuario: userSessionStorage = {id: 0, token: "", rol: ""}
   login = true
   crearTarea = false
+  modificarTarea = false
   constructor(private router: Router) {
   }
   ngOnInit(): void {
@@ -34,6 +37,10 @@ export class MainComponent implements OnInit {
 
   crearTareaAbrir() {
     this.crearTarea = true
+  }
+
+  modificarTareaAbrir() {
+    this.modificarTarea = true
   }
 
   manejarDatoRecibido(dato: boolean) {
