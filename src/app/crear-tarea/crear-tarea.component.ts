@@ -6,6 +6,7 @@ import {UsuarioService} from "../services/usuario/usuario.service";
 import {HttpResponse} from "@angular/common/http";
 import {ServicioTareasService} from "../services/tareas/servicio-tareas.service";
 import {Router} from "@angular/router";
+import {UserGet} from "../interfaces/usuario-interface";
 
 @Component({
   selector: 'app-crear-tarea',
@@ -41,8 +42,9 @@ export class CrearTareaComponent implements OnInit {
     }
     // Obtener todos los usuarios
     this.usuarioService.getUsuarios(this.usuario.token).subscribe({
-      next: (data: HttpResponse<any>) => {
-        this.usuarios = data.body.usuarios
+      next: (data: HttpResponse<UserGet>) => {
+        console.log(data)
+        this.usuarios = data.body?.usuarios
       },
       error: (err) => {
         console.log("Error al obtener usuarios", err)

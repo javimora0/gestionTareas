@@ -17,8 +17,7 @@ export class ModificarTareaComponent implements OnInit{
   tareas? : any[] = []
   usuario: userSessionStorage = {id: 0, token: "", rol: ""}
 
-  constructor(private tareaService: ServicioTareasService) {
-  }
+  constructor(private tareaService: ServicioTareasService) {}
   ngOnInit(): void {
     const usuarioAlmacenado = sessionStorage.getItem('usuario');
     if (usuarioAlmacenado) {
@@ -35,4 +34,8 @@ export class ModificarTareaComponent implements OnInit{
     })
   }
 
+  cerrar() {
+    this.modificarTareaModal = false
+    this.modificarTareaEmitido.emit(this.modificarTareaModal)
+  }
 }

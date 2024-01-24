@@ -46,4 +46,7 @@ export class MainComponent implements OnInit {
   manejarDatoRecibido(dato: boolean) {
     this.crearTarea = dato
   }
+  manejarDato(dato: boolean) {
+    this.modificarTarea = dato
+  }
 }
