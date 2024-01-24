@@ -46,7 +46,7 @@ export class MainComponent implements OnInit {
     this.modal = 'modificar'
   }
   eliminarTareaAbrir() {
-    this.modal = 'eliminar'
+    this.router.navigate(['/main/consultas'])
   }
 
   manejarDatoRecibido(dato: string) {

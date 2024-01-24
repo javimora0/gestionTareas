@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ServicioTareasService} from "../services/tareas/servicio-tareas.service";
 import {userSessionStorage} from "../interfaces/login-interface";
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpResponse} from "@angular/common/http";
 import {Tarea} from "../interfaces/tarea-interface";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -18,6 +18,7 @@ import {UsuarioService} from "../services/usuario/usuario.service";
   styleUrl: './info-tarea.component.css'
 })
 export class InfoTareaComponent implements OnInit{
+  idTarea: string | null = '0'
   mensaje = ''
   usuario: userSessionStorage = {id: 0, token: "", rol: ""}
   tarea?:any
@@ -32,7 +33,7 @@ export class InfoTareaComponent implements OnInit{
   })
   usuarios?: any[] = []
 
-  constructor(private usuarioService: UsuarioService,private tareaService: ServicioTareasService, private router: ActivatedRoute) {
+  constructor(private usuarioService: UsuarioService,private tareaService: ServicioTareasService, private router: ActivatedRoute, private routerNavigate: Router) {
   }
   ngOnInit(): void {
     const usuarioAlmacenado = sessionStorage.getItem('usuario');
@@ -51,6 +52,7 @@ export class InfoTareaComponent implements OnInit{
     })
 
     this.router.paramMap.subscribe(params => {
+      this.idTarea = params.get('idTarea')
       this.obtenerTarea(params.get('idTarea'))
     });
 
@@ -79,8 +81,31 @@ export class InfoTareaComponent implements OnInit{
     });
   }
   cerrar() {
-
+    this.routerNavigate.navigate(['/main']).then((r) => console.log(r));
   }
 
-  modificarTarea() {}
+  modificarTarea() {
+    let body: Tarea = {
+      descripcion: this.informacionTarea.value.descripcion ?? '',
+      dificultad: this.informacionTarea.value.dificultad ?? '',
+      horas_previstas: this.informacionTarea.value.hrsPrevistas?? 0,
+      horas_realizadas: this.informacionTarea.value.realizadas ?? 0,
+      porcentaje: this.informacionTarea.value.porcentaje ?? 0,
+      completada: this.informacionTarea.value.completada ?? 0,
+      id_usuario: this.informacionTarea.value.usuario ?? 0
+    }
+    console.log(body)
+    this.tareaService.postTarea(this.usuario.token,this.idTarea, body).subscribe({
+      next: (response: HttpResponse<Tarea>) => {
+        if (response.status === 200) {
+          this.routerNavigate.navigate(['/main'])
+        }
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+
+
+  }
 }

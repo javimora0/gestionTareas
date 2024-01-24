@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  background: #162836;
 }
 
 .item {
@@ -28,5 +29,5 @@
 
 .item h2 {
   margin-top: 10px;
-  color: #666;
+  color: #ffffff;
 }

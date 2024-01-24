@@ -5,14 +5,14 @@ body, html {
 }
 
 .elegante-header {
-  background-color: #f5f5f5; /* Un fondo claro */
-  text-align: center; /* Centra el contenido */
-  padding: 20px 0; /* Espacio superior e inferior */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Una sombra ligera para dar profundidad */
+  background-color: #132032;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .elegante-header h1 {
   margin: 0;
-  color: #333; /* Color de texto */
-  font-size: 2.5em; /* Tamaño grande del texto */
+  color: #333;
+  font-size: 2.5em;
 }
