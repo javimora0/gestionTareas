@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {NgOptimizedImage} from "@angular/common";
 import {userSessionStorage} from "../interfaces/login-interface";
 
@@ -7,14 +7,15 @@ import {userSessionStorage} from "../interfaces/login-interface";
   selector: 'app-main',
   standalone: true,
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
   usuario: userSessionStorage = {id: 0, token: "", rol: ""}
-
+  login = true
   constructor(private router: Router) {
   }
   ngOnInit(): void {
@@ -22,19 +23,8 @@ export class MainComponent implements OnInit {
     if (usuarioAlmacenado) {
       this.usuario = JSON.parse(usuarioAlmacenado) as userSessionStorage;
     } else {
-      // Avisar de que tiene que iniciar sesion
+      this.login = false
     }
   }
-
-  crearTarea() {
-    this.router.navigate(['/crear-tarea'], {skipLocationChange: true}).then(r => console.log(r));
-  }
-
-  modificarTarea() {
-  }
-
-  borrarTarea() {
-  }
-
 
 }

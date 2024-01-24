@@ -17,7 +17,8 @@
   width: 256px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el efecto */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .imagen:hover {
@@ -28,4 +29,30 @@
 .item h2 {
   margin-top: 10px;
   color: #666;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  text-align: center;
+}
+
+.modal button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
 }

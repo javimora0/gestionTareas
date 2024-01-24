@@ -1,79 +1,58 @@
-body{
-    margin: 0;
-}
-
 .login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
 }
 
 .login-container {
-    width: 500px;
-    padding: 40px;
-    margin: auto;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.login-container h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 50%; /* Ajusta esto según tus necesidades */
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
+  display: block;
+  margin-bottom: 5px;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
+.form-group input[type="text"],
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .login-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #5C6BC0;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px; /* Espacio entre botones */
 }
 
 .login-button:hover {
-    background-color: #3F51B5;
+  background-color: #45a049;
 }
 
-.form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: white;
-    box-sizing: border-box;
-    color: #333;
-}
-
-.form-group select:focus {
-    border-color: #5C6BC0;
+/* Alinear botones en la misma fila */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .label-message {
-    color: red;
+  color: red;
+  margin-top: 15px;
 }

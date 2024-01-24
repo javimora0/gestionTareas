@@ -8,7 +8,13 @@
             </div>
             <div class="form-group">
                 <label>Dificultad</label>
-                <input type="text" id="dificultad" name="dificultad" required formControlName="dificultad">
+              <select id="dificultad" name="dificultad" required formControlName="dificultad">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
             </div>
             <div class="form-group">
                 <label>Horas Previstas</label>
@@ -38,7 +44,8 @@
                 </select>
             </div>
             <button (click)="crearTarea()" type="submit" class="login-button">Crear tarea</button>
+          <button class="login-button" (click)="cerrar()"> Cancelar </button>
         </form>
-        <label class="label-message">{{mensaje}}</label>
+        <label class="label-message">{{ mensaje }}</label>
     </div>
 </div>
