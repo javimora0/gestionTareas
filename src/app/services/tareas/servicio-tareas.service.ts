@@ -36,7 +36,7 @@ export class ServicioTareasService {
     return this.http.post<tareaPost>(this.url, body, httpOptions)
   }
 
-  getTarea(token: string, idTarea: string | null): Observable<HttpResponse<any>> {
+  getTarea(token: string, idTarea: string | null): Observable<HttpResponse<Tarea>> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
