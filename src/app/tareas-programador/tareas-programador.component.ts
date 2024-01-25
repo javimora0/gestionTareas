@@ -6,12 +6,14 @@ import {UsuarioService} from "../services/usuario/usuario.service";
 import {ServicioTareasService} from "../services/tareas/servicio-tareas.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import {MostrarTareasComponent} from "../mostrar-tareas/mostrar-tareas.component";
 
 @Component({
   selector: 'app-tareas-programador',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MostrarTareasComponent
   ],
   templateUrl: './tareas-programador.component.html',
   styleUrl: './tareas-programador.component.css'
@@ -39,7 +41,7 @@ export class TareasProgramadorComponent implements OnInit{
   programadorControl = new FormControl('');
 
   tareas?: any[] = []
-
+  mostrarTareas: boolean | undefined = false
   buscarTarea() {
     let idSeleccionado = this.programadorControl.value;
     if (typeof idSeleccionado === "string") {
@@ -47,6 +49,7 @@ export class TareasProgramadorComponent implements OnInit{
         next: (data: HttpResponse<any>) => {
           this.tareas = data.body.data
           console.log(this.tareas)
+          this.mostrarTareas = true
       },
         error: (err) => {
           console.log("Error al obtener usuarios", err)
@@ -55,5 +58,11 @@ export class TareasProgramadorComponent implements OnInit{
     }
   }
 
+  manejarDatoRecibido(dato: boolean) {
+    this.mostrarTareas = dato
+  }
 
+  cerrar() {
+    this.routerNavigate.navigate(['main/consultas'])
+  }
 }

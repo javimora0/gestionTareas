@@ -8,4 +8,10 @@
     </select>
   </div>
   <button (click)="buscarTarea()" class="buscar-btn">Buscar</button>
+  <button (click)="cerrar()" class="buscar-btn">Volver atras</button>
+
 </div>
+
+@if (mostrarTareas) {
+  <app-mostrar-tareas [tareas]="tareas" [mostrarTareas]="mostrarTareas" (pasarDato)="manejarDatoRecibido($event)"></app-mostrar-tareas>
+}

@@ -1,8 +1,10 @@
-@import '@angular/material/prebuilt-themes/purple-green.css';
 
 body {
-  background-image: url('/assets/fondo.png'); /* Reemplaza con la ruta real de la imagen */
+  background-image: url('/assets/fondo.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
