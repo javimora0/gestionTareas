@@ -1,8 +1,8 @@
 @if (!login) {
   <app-modal-inicio-sesion></app-modal-inicio-sesion>
 } @else {
-  @switch (modal){
-    @case('main'){
+  @switch (modal) {
+    @case ('main') {
       <div class="container">
         <div class="item">
           <img (click)="crearTareaAbrir()" src="../../assets/nuevatarea.png" alt="Imagen 1" class="imagen">
@@ -19,14 +19,11 @@
       </div>
       <button mat-button (click)="openDialog()">Open dialog</button>
     }
-    @case('crear'){
-      <app-crear-tarea [modal] = "modal" (crearTareaEmitido)="manejarDatoRecibido($event)"></app-crear-tarea>
+    @case ('crear') {
+      <app-crear-tarea [modal]="modal" (crearTareaEmitido)="manejarDatoRecibido($event)"></app-crear-tarea>
     }
-    @case('modificar'){
-      <app-modificar-tarea [modal] = "modal" (modificarTareaEmitido)="manejarDatoRecibido($event)"></app-modificar-tarea>
-    }
-    @case ('consultas'){
-      <app-eliminar-tarea  [modal] = "modal" (modificarTareaEmitido)="manejarDatoRecibido($event)"></app-eliminar-tarea>
+    @case ('modificar') {
+      <app-modificar-tarea [modal]="modal" (modificarTareaEmitido)="manejarDatoRecibido($event)"></app-modificar-tarea>
     }
   }
 }

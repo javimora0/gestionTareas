@@ -1,0 +1,11 @@
+<div class="selector-container">
+  <h1>Seleccione un programador</h1>
+  <div class="dropdown-container">
+    <select class="programador-dropdown" [formControl]="programadorControl">
+      @for (usuario of this.usuarios; track usuario.id) {
+        <option  id="valor" value="{{usuario.id}}">{{usuario.nombre}}</option>
+      }
+    </select>
+  </div>
+  <button (click)="buscarTarea()" class="buscar-btn">Buscar</button>
+</div>

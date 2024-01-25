@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
     this.modal = 'modificar'
   }
   eliminarTareaAbrir() {
-    this.modal = 'consultas'
+    this.router.navigate(['main/consultas/ranking'])
   }
 
   manejarDatoRecibido(dato: string) {

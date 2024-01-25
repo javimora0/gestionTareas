@@ -59,4 +59,36 @@ export class ServicioTareasService {
     };
     return this.http.put(this.url + '/' + idTarea, body,httpOptions)
   }
+
+  getTareasRealizadas(token: string): Observable<HttpResponse<Tarea>> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-token': token
+      }),
+      observe: 'response' as 'response'
+    };
+    return this.http.get<Tarea>(this.url +'/completadas', httpOptions)
+  }
+  getTareasIncompletas(token: string): Observable<HttpResponse<Tarea>> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-token': token
+      }),
+      observe: 'response' as 'response'
+    };
+    return this.http.get<Tarea>(this.url +'/pendientes', httpOptions)
+  }
+
+  getTareasUsuario(token: string, idUsuario: number): Observable<HttpResponse<Tarea>> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-token': token
+      }),
+      observe: 'response' as 'response'
+    };
+    return this.http.get<Tarea>(this.url +'/pendientes', httpOptions)
+  }
 }

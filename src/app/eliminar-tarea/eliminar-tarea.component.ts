@@ -11,22 +11,30 @@ import {Router} from "@angular/router";
   styleUrl: './eliminar-tarea.component.css'
 })
 export class EliminarTareaComponent implements OnInit {
-  @Input() modal!: string;
-  @Output() modificarTareaEmitido = new EventEmitter<string>();
 
 
-  constructor(private tareaService: ServicioTareasService, private router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
 
   }
 
+  realizadas() {
+    this.router.navigate(['main/consultas/tareas/realizadas'])
+  }
   ranking() {
     this.router.navigate(['main/consultas/ranking'])
   }
+
+  incompletas() {
+    this.router.navigate(['main/consultas/tareas/incompletas'])
+  }
+
+  unProgramador(){
+    this.router.navigate(['main/consultas/tareas/tarea'])
+  }
   cerrar() {
-    this.modal = 'main'
-    this.modificarTareaEmitido.emit(this.modal)
+    this.router.navigate(['main'])
   }
 }
