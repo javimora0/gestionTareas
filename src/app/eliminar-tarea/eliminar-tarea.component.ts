@@ -22,6 +22,9 @@ export class EliminarTareaComponent implements OnInit {
 
   }
 
+  ranking() {
+    this.router.navigate(['main/consultas/ranking'])
+  }
   cerrar() {
     this.modal = 'main'
     this.modificarTareaEmitido.emit(this.modal)

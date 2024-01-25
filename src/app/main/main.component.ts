@@ -6,6 +6,9 @@ import {ModalInicioSesionComponent} from "../modal-inicio-sesion/modal-inicio-se
 import {CrearTareaComponent} from "../crear-tarea/crear-tarea.component";
 import {ModificarTareaComponent} from "../modificar-tarea/modificar-tarea.component";
 import {EliminarTareaComponent} from "../eliminar-tarea/eliminar-tarea.component";
+import {MatDialog, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {DialogComponent} from "../dialog/dialog.component";
+import {MatButton, MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-main',
@@ -16,7 +19,9 @@ import {EliminarTareaComponent} from "../eliminar-tarea/eliminar-tarea.component
     ModalInicioSesionComponent,
     CrearTareaComponent,
     ModificarTareaComponent,
-    EliminarTareaComponent
+    EliminarTareaComponent,
+    MatButton,
+    MatButtonModule
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
@@ -24,10 +29,8 @@ import {EliminarTareaComponent} from "../eliminar-tarea/eliminar-tarea.component
 export class MainComponent implements OnInit {
   usuario: userSessionStorage = {id: 0, token: "", rol: ""}
   login = true
-  crearTarea = false
-  modificarTarea = false
   modal = 'main'
-  constructor(private router: Router) {
+  constructor(private router: Router, public dialog: MatDialog) {
   }
   ngOnInit(): void {
     const usuarioAlmacenado = sessionStorage.getItem('usuario');
@@ -46,10 +49,22 @@ export class MainComponent implements OnInit {
     this.modal = 'modificar'
   }
   eliminarTareaAbrir() {
-    this.router.navigate(['/main/consultas'])
+    this.modal = 'consultas'
   }
 
   manejarDatoRecibido(dato: string) {
     this.modal = dato
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { animal: 'panda' },
+      width: '250px', // Opcional: puedes definir un ancho
+      disableClose: false // Asegúrate de que esta opción esté false o ausente
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El diálogo se cerró');
+      // Maneja el resultado si es necesario
+    });
   }
 }

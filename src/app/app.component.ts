@@ -14,7 +14,6 @@ import {ServicioCompartidoService} from "./services/compartido/servicio-comparti
 
 export class AppComponent {
 
-  logeado: boolean = true
   nombre: any
 
   constructor(private servicioCompartido: ServicioCompartidoService) {

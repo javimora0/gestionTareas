@@ -17,12 +17,16 @@
           <h2>Consultas</h2>
         </div>
       </div>
+      <button mat-button (click)="openDialog()">Open dialog</button>
     }
     @case('crear'){
       <app-crear-tarea [modal] = "modal" (crearTareaEmitido)="manejarDatoRecibido($event)"></app-crear-tarea>
     }
     @case('modificar'){
       <app-modificar-tarea [modal] = "modal" (modificarTareaEmitido)="manejarDatoRecibido($event)"></app-modificar-tarea>
+    }
+    @case ('consultas'){
+      <app-eliminar-tarea  [modal] = "modal" (modificarTareaEmitido)="manejarDatoRecibido($event)"></app-eliminar-tarea>
     }
   }
 }

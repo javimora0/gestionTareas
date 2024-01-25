@@ -37,6 +37,7 @@ export class CrearTareaComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private tareaServicio: ServicioTareasService, private router: Router) {}
 
   ngOnInit(): void {
+    this.modal = 'consultas'
     const usuarioAlmacenado = sessionStorage.getItem('usuario');
     if (usuarioAlmacenado) {
       this.usuario = JSON.parse(usuarioAlmacenado) as userSessionStorage;
