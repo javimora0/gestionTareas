@@ -6,7 +6,7 @@
       <!-- Campo de seleccion de email -->
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
-        <input id="email" type="email" matInput  placeholder="Ex. pat@example.com" formControlName="email">
+        <input id="email" type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
         @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
           <mat-error>Please enter a valid email address</mat-error>
         }
@@ -19,8 +19,9 @@
       <mat-form-field>
         <mat-label>Enter your password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
 
@@ -32,8 +33,8 @@
           <mat-option value="developer">programador</mat-option>
         </mat-select>
       </mat-form-field>
-      <button (click)="logear()" type="submit" class="login-button">Ingresar</button>
+      <button mat-raised-button (click)="logear()">Iniciar Sesión</button>
     </form>
-    <label class="label-message">{{mensaje}}</label>
+    <label class="label-message">{{ mensaje }}</label>
   </div>
 </div>
