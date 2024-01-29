@@ -1,0 +1,17 @@
+<div class="selector-container">
+  <h1>Seleccione un programador</h1>
+  <div class="dropdown-container">
+    <select class="programador-dropdown" [formControl]="programadorControl">
+      @for (usuario of this.usuarios; track usuario.id) {
+        <option  id="valor" value="{{usuario.id}}">{{usuario.nombre}}</option>
+      }
+    </select>
+  </div>
+  <button (click)="buscarTarea()" class="buscar-btn">Buscar</button>
+  <button (click)="cerrar()" class="buscar-btn">Volver atras</button>
+
+</div>
+
+@if (mostrarTareas) {
+  <app-mostrar-tareas [tareas]="tareas" [mostrarTareas]="mostrarTareas" (pasarDato)="manejarDatoRecibido($event)"></app-mostrar-tareas>
+}

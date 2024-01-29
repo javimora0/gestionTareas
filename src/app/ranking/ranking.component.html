@@ -1,0 +1,22 @@
+<h1>Ranking de programadores</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Tareas Completadas</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (usuario of users; track usuario.id) {
+      <tr>
+        <td hidden>{{ usuario.id }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>{{ usuario.tareasCompletadas }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+<button (click)="cerrar()">Volver atras</button>

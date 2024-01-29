@@ -49,7 +49,7 @@ body{
   padding: 15px;
   border: none;
   border-radius: 5px;
-  background-color: #5C6BC0;
+  background-color: #4A4A4A;
   color: white;
   font-size: 18px;
   cursor: pointer;
@@ -57,7 +57,7 @@ body{
 }
 
 .login-button:hover {
-  background-color: #3F51B5;
+  background-color: #181818;
 }
 
 .form-group select {
@@ -71,9 +71,34 @@ body{
 }
 
 .form-group select:focus {
-  border-color: #5C6BC0;
+  border-color: #ff0000;
 }
 
 .label-message {
   color: red;
 }
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+

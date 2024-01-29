@@ -1,4 +1,4 @@
 export const env = {
-  URL:'http://localhost:9090/api/',
+  URL:'http://localhost:9090/',
 
 };

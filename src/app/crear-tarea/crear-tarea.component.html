@@ -1,0 +1,51 @@
+<div class="login-wrapper">
+    <div class="login-container">
+        <h2>Crear una tarea</h2>
+        <form [formGroup]="crearTareaForm">
+            <div class="form-group" >
+                <label>Descripción</label>
+                <input type="text" id="descripcion" name="descripcion" required  formControlName="descripcion">
+            </div>
+            <div class="form-group">
+                <label>Dificultad</label>
+              <select id="dificultad" name="dificultad" required formControlName="dificultad">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label>Horas Previstas</label>
+                <input type="text" id="previstas" name="previstas" required formControlName="hrsPrevistas">
+            </div>
+            <div class="form-group">
+                <label>Horas Realizadas</label>
+                <input type="text" id="realizadas" name="realizadas" required formControlName="realizadas">
+            </div>
+            <div class="form-group">
+                <label>Porcentaje</label>
+                <input type="text" id="porcentaje" name="porcentaje" required formControlName="porcentaje">
+            </div>
+            <div class="form-group">
+                <label for="completada">Completada</label>
+                <select id="completada" name="completada" required formControlName="completada">
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="usuario">Asignar usuario</label>
+                <select id="usuario" name="usuario" required formControlName="usuario">
+                    @for (usuario of this.usuarios; track usuario.id) {
+                        <option value="{{usuario.id}}">{{usuario.nombre}}</option>
+                    }
+                </select>
+            </div>
+            <button (click)="crearTarea()" type="submit" class="login-button">Crear tarea</button>
+          <button class="login-button" (click)="cerrar()"> Cancelar </button>
+        </form>
+        <label class="label-message">{{ mensaje }}</label>
+    </div>
+</div>
